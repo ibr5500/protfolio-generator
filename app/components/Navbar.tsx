@@ -15,7 +15,7 @@ const Navbar = () => {
             alt="..."
           />
         </a>
-        <div className="hidden md:block flex items-center">
+        <div className="hidden md:block items-center">
           <div className="flex gap-8">
             <a href="/" className="text-gray-300 hover:text-white">Home</a>
             <a href="#" className="text-gray-300 hover:text-white">About</a>

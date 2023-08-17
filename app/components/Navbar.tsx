@@ -1,31 +1,35 @@
 "use client"
 
 import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full border-b border-gray-300 mb-4">
+    <nav className="w-full border-b border-gray-300">
       <div className="flex flex-row justify-between p-4">
-        <a href="/">
-          <img
-            className="w-12"
-            src="./logo.png"
+        <Link href="/">
+          <Image
+            className="w-12 hover:animate-pulse"
+            src="/logo.png"
             alt="..."
+            width={60}
+            height={60}
           />
-        </a>
+        </Link>
         <div className="hidden md:block items-center">
           <div className="flex gap-8">
-            <a href="/" className="text-gray-300 hover:text-white">Home</a>
-            <a href="#" className="text-gray-300 hover:text-white">About</a>
-            <a href="#" className="text-gray-300 hover:text-white">Contact</a>
+            <Link href="/" className="text-gray-300 hover:text-white hover:animate-pulse">Home</Link>
+            <Link href="/about" className="text-gray-300 hover:text-white hover:animate-pulse">About</Link>
+            <Link href="/contact" className="text-gray-300 hover:text-white hover:animate-pulse">Contact</Link>
           </div>
         </div>
         <div>
           <button
             type="button"
-            className="block md:hidden  hover:bg-sky-700 focus:outline-none focus:ring focus:ring-violet-300 px-4 rounded-3xl"
+            className="block md:hidden text-gray-300 focus:outline-none focus:ring focus:ring-violet-300 px-4 rounded-3xl"
             aria-controls="mobile-menu"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -54,24 +58,27 @@ const Navbar = () => {
         className={`md:hidden ${isMenuOpen ? 'block  bg-slate-700 w-1/2 fixed min-h-screen' : 'hidden'}`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a
+          <Link
             href="/"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Home
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             About
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
